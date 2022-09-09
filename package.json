@@ -22,7 +22,10 @@
       "react-app",
       "react-app/jest",
       "@hayeslv"
-    ]
+    ],
+    "rules": {
+      "eslint-comments/disable-enable-pair": "off"
+    }
   },
   "browserslist": {
     "production": [

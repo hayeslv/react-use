@@ -1,4 +1,5 @@
 import { REACT_ELEMENT } from './constants';
+import { wrapToVdom } from './utils';
 
 function createElement(type, config, children) {
   let ref; // 用来获取真实DOM元素
@@ -14,15 +15,19 @@ function createElement(type, config, children) {
   const props = { ...config };
   if (arguments.length > 3) {
     // 有多个children，此处就是一个数组
-    props.children = Array.prototype.slice.call(arguments, 2);
+    props.children = Array.prototype.slice.call(arguments, 2).map(wrapToVdom);
   } else {
     // 如果只有一个children，则是对象或字符串
     // 如果没有，则是 undefined
-    props.children = children;
+    props.children = wrapToVdom(children);
   }
 
   return {
-    $$typeof: REACT_ELEMENT,
+    $$typeof: REACT_ELEMENT, // 表示这是一个虚拟DOM，也就是说这是一个React元素
+    type, // 虚拟DOM元素的类型
+    ref,
+    key,
+    props, // 属性对象：id、className、style...
   };
 }
 
