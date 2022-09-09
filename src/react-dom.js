@@ -20,6 +20,8 @@ function createDOM(vdom) {
   let dom;
   if (type === REACT_TEXT) { // 文本
     dom = document.createTextNode(props);
+  } else if (typeof type === 'function') {
+    return mountFunctionComponent(vdom);
   } else {
     dom = document.createElement(type);
   }
@@ -38,6 +40,13 @@ function createDOM(vdom) {
   }
 
   return dom;
+}
+
+function mountFunctionComponent(vdom) {
+  const { type, props } = vdom;
+  // type 是一个函数
+  const renderVdom = type(props);
+  return createDOM(renderVdom);
 }
 
 function reconcileChildren(children, parentDom) {
