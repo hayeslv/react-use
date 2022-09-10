@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React</title>
+  </head>
+  <body>
+
+    <div id="app"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+      class Complex extends React.Component {
+        constructor(props) {
+          super(props)
+          this.state = {
+            msg: "我是类组件哟"
+          }
+        }
+        render() {
+          // this指的就是Complex这个类组件
+          const {msg} = this.state
+          return (
+            <h1>{msg}</h1>
+          )
+        }
+      }
+
+      ReactDOM.render(<Complex />, document.getElementById("app"))
+    </script>
+
+  </body>
+</html>
