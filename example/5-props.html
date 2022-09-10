@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React</title>
+  </head>
+  <body>
+
+    <div id="app"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.6/prop-types.js"></script>
+
+    <script type="text/babel">
+      class Person extends React.Component {
+        render() {
+          const { name, sex, age } = this.props
+          return (
+            <div>
+              <h1>姓名：{name}</h1>  
+              <h1>性别：{sex || "男"}</h1>  
+              <h1>年龄：{age || 18}</h1>  
+            </div>
+          )
+        }
+      }
+
+      let person = { name: "关羽" }
+
+      Person.propTypes = {
+        name: PropTypes.string.isRequired // name 是必须的
+      }
+
+      Person.defaultProps = {
+        sex: "男",
+        age: 1000
+      }
+
+      ReactDOM.render(<Person {...person} />, document.getElementById("app"))
+    </script>
+
+  </body>
+</html>

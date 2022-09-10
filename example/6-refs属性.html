@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React</title>
+  </head>
+  <body>
+
+    <div id="app"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+      class Input extends React.Component {
+        handleClick = () => {
+          console.log(this.input); // 获取 input 标签（真实DOM）
+          console.log(this.refs.myP); // 获取 p 标签
+        }
+        render() {
+          return (
+            <div>
+              <input type="text" ref={input => this.input = input} />  
+              <p ref="myP">这是p段落</p>
+              <button onClick={this.handleClick}>点击</button>
+            </div>
+          )
+        }
+      }
+
+      ReactDOM.render(<Input />, document.getElementById("app"))
+
+    </script>
+
+  </body>
+</html>

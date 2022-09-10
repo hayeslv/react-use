@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React</title>
+  </head>
+  <body>
+
+    <div id="app"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+      // 页面上展示“我喜欢你”，点击后展示“你喜欢我”
+      class Like extends React.Component {
+        state = {
+          flag: true
+        }
+        handleClick = () => {
+          const { flag } = this.state;
+          this.setState({
+            flag: !flag
+          })
+        }
+        render() {
+          const { flag } = this.state;
+          const msg = flag ? "我喜欢你" : "你喜欢我吗？？"
+
+          return <h1 onClick={this.handleClick}>{ msg }</h1>
+        }
+      }
+
+      ReactDOM.render(<Like />, document.getElementById("app"))
+    </script>
+
+  </body>
+</html>
