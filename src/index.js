@@ -1,13 +1,5 @@
-import React from './react';
-import ReactDom from './react-dom';
+import React from 'react';
+import ReactDom from 'react-dom';
+import Comment from './example/example-1';
 
-class ClassComponent extends React.Component {
-  render() {
-    return <h1 className='title' style={{ color: 'red' }}>1</h1>;
-  }
-}
-
-// 参数被babel后会变成一个props： { name: "hayes", age: 18 }
-const element = <ClassComponent name="hayes" age={18} />;
-
-ReactDom.render(element, document.getElementById('root'));
+ReactDom.render(<Comment />, document.getElementById('root'));

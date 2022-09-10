@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React</title>
+  </head>
+  <body>
+
+    <div id="app"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+      class Complex extends React.Component {
+        constructor(props) {
+          super(props)
+          this.state = {
+            msg: "我是h1标签"
+          }
+          console.log("constructor");
+        }
+        componentWillMount() {
+          console.log("componentWillMount");
+        }
+        componentDidMount() {
+          console.log("componentDidMount");
+        }
+        componentWillUpdate() {
+          console.log("componentWillUpdate");
+        }
+        componentDidUpdate() {
+          console.log("componentDidUpdate");
+        }
+        shouldComponentUpdate(nextProps, nextState) {
+          // 这里可以做一些判断，优化是否要渲染
+          console.log("nextProps", nextProps);
+          console.log("nextState", nextState);
+          return true
+        }
+        componentWillUnmount() {
+          console.log("componentWillUnmount");
+        }
+        unMount = () => {
+          ReactDOM.unmountComponentAtNode(document.getElementById("app"))
+        }
+        handleClick = () => {
+          this.setState({
+            msg: "我是改变后的msg"
+          })
+        }
+        render() {
+          console.log("render");
+          const { msg } = this.state
+          return (
+            <div>
+              <h1>{ msg }</h1>  
+              <button onClick={this.handleClick}>点击改变msg</button>
+              <button onClick={this.unMount}>卸载</button>
+            </div>
+          )
+        }
+      }
+      
+
+      ReactDOM.render(<Complex />, document.getElementById("app"))
+
+    </script>
+
+  </body>
+</html>
