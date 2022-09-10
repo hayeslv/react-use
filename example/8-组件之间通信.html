@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React</title>
+  </head>
+  <body>
+
+    <div id="app"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+
+      class App extends React.Component {
+        state = {
+          arr: ["张飞", "关羽", "赵云"]
+        }
+        handleAdd = (value) => {
+          const { arr } = this.state
+          arr.unshift(value)
+          this.setState({
+            arr
+          })
+        }
+        render() {
+          const { arr } = this.state
+          return (
+            <div>
+              <Add add={this.handleAdd} />
+              <List list={arr} />  
+            </div>
+          )
+        }
+      }
+
+      class Add extends React.Component {
+        handleClick = () => {
+          this.props.add(this.input.value)
+          this.input.value = ""
+        }
+        render() {
+          return (
+            <div>
+              <input type="text" ref={(input) => this.input = input} />
+              <button onClick={this.handleClick}>添加</button>  
+            </div>
+          )
+        }
+      }
+
+      // list只做数据的展示，所以我们可以使用函数组件
+      function List(props) {
+        const { list } = props
+        return (
+          <ul>
+            { list.map((name, index) => (
+              <li key={index}>{name}</li>
+            )) }
+          </ul>
+        )
+      }
+
+      ReactDOM.render(<App />, document.getElementById("app"))
+
+    </script>
+
+  </body>
+</html>
