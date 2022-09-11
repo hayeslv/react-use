@@ -1,5 +1,11 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import Comment from './example/example-1';
+import { BrowserRouter } from 'react-router-dom';
+import App from './example/example-2';
 
-ReactDom.render(<Comment />, document.getElementById('root'));
+ReactDom.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+  , document.getElementById('root'),
+);
