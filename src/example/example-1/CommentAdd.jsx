@@ -10,17 +10,28 @@ class CommentAdd extends React.Component {
     };
   }
 
-  changeUsername(event) {
+  changeUsername = (event) => {
+    console.log(event.target.value);
     this.setState({
       username: event.target.value,
     });
-  }
+  };
 
-  changeContent(event) {
+  changeContent = (event) => {
     this.setState({
       content: event.target.value,
     });
-  }
+  };
+
+  handleSubmit = () => {
+    const { add } = this.props;
+    const { username, content } = this.state;
+    add({ username, content });
+    this.setState({
+      username: '',
+      content: '',
+    });
+  };
 
   render() {
     return (
@@ -39,7 +50,7 @@ class CommentAdd extends React.Component {
           </div>
           <div className="form-group">
             <div className="col-sm-offset-2 col-sm-10">
-              <button type='button' className='btn btn-default pull-right'>提交</button>
+              <button type='button' className='btn btn-default pull-right' onClick={this.handleSubmit}>提交</button>
             </div>
           </div>
         </form>

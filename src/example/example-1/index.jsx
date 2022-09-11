@@ -33,6 +33,20 @@ class App extends React.Component {
     }, 1000);
   }
 
+  handleAdd = (comment) => {
+    const { comments } = this.state;
+    comments.unshift(comment);
+    this.setState({
+      comments,
+    });
+  };
+
+  handleDelete = (index) => {
+    const { comments } = this.state;
+    comments.splice(index, 1);
+    this.setState({ comments });
+  };
+
   render() {
     const { comments } = this.state;
     return (
@@ -47,8 +61,8 @@ class App extends React.Component {
           </div>
         </header>
         <div className="container">
-          <CommentAdd></CommentAdd>
-          <CommentList comments={comments}></CommentList>
+          <CommentAdd add={this.handleAdd}></CommentAdd>
+          <CommentList comments={comments} delete={this.handleDelete}></CommentList>
         </div>
       </div>
     );

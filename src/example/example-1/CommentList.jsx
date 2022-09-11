@@ -7,6 +7,12 @@ class CommentList extends React.Component {
     super(props);
   }
 
+  delete = (username, index) => {
+    if (window.confirm(`你确定要删除${username}的评论吗？`)) {
+      this.props.delete(index);
+    }
+  };
+
   render() {
     const { comments } = this.props;
     const display = comments.length ? 'none' : 'block';
@@ -20,7 +26,7 @@ class CommentList extends React.Component {
             comments.map((comment, index) => (
               <li key={index} className='list-group-item'>
                 <div className="handle">
-                  <a href="javascript;" onClick={() => this.deleteComment(comment.username, index)}>删除</a>
+                  <a href="javascript:" onClick={() => this.delete(comment.username, index)}>删除</a>
                 </div>
                 <p className="user">
                   <span>{comment.username}</span>

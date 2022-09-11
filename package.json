@@ -24,7 +24,9 @@
       "@hayeslv"
     ],
     "rules": {
-      "eslint-comments/disable-enable-pair": "off"
+      "eslint-comments/disable-enable-pair": "off",
+      "jsx-a11y/anchor-is-valid": "off",
+      "no-script-url": "off"
     }
   },
   "browserslist": {
