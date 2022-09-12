@@ -1,17 +1,27 @@
 import React from 'react';
+import { Navigate, Route, Routes, NavLink } from 'react-router-dom';
+import Message from './Message';
+import News from './News';
 
-class Home extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
+export default function Home() {
+  return (
+    <div>
+      <h2>home组件的内容</h2>
       <div>
-        home
+        <ul>
+          <li>
+            <NavLink to="/home/news">News</NavLink>
+          </li>
+          <li>
+            <NavLink to="/home/message">Message</NavLink>
+          </li>
+        </ul>
       </div>
-    );
-  }
+      <Routes>
+        <Route path='news' element={<News />}></Route>
+        <Route path='message/*' element={<Message />}></Route>
+        <Route path="" element={<Navigate to="/home/news" />}/>
+      </Routes>
+    </div>
+  );
 }
-
-export default Home;

@@ -19,7 +19,7 @@ class App extends React.Component {
         <div className="body">
           <Routes>
             <Route path='/about' element={<About />} />
-            <Route path='/home' element={<Home />} />
+            <Route path='/home/*' element={<Home />} />
             {/* react-router v5版本使用方式 */}
             {/* <Redirect to="/home" /> */}
             {/* v6版本：使用Navigate */}
