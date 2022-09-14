@@ -1,4 +1,5 @@
 // 日志容器
+import Card from "../UI/Card"
 import LogItem from "./LogItem/LogItem"
 import "./Logs.css"
 
@@ -16,11 +17,11 @@ const Logs = () => {
 
  
 
-  return <div className="logs">
+  return <Card className="logs">
     {
       logItemDate
     }
-  </div>
+  </Card>
 }
 
 export default Logs

@@ -1,8 +1,9 @@
 import MyDate from "./MyDate/MyDate"
 import "./LogItem.css"
+import Card from "../../UI/Card"
 
 const Comp = (props) => {
-  return <div className="item">
+  return <Card className="item">
     {/* 日期 */}
     <MyDate date={props.date} />
     {/* 日志内容 */}
@@ -10,7 +11,7 @@ const Comp = (props) => {
       <h2 className="desc">{props.desc}</h2>
       <div className="time">{props.time}分钟</div>
     </div>
-  </div>
+  </Card>
 }
 
 export default Comp

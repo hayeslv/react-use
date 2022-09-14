@@ -6,8 +6,8 @@ import UseState from "./Components/UseState"
 export default function App() {
   return <div>
     {/* <Ref /> */}
-    {/* <Logs /> */}
+    <Logs />
     {/* <UseState /> */}
-    <ClassComp />
+    {/* <ClassComp /> */}
   </div>
 }

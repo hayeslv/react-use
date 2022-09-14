@@ -5,8 +5,6 @@
   display: flex;
   margin: 16px 0;
   background-color: #FCBF49;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   padding: 6px;
 }
 
