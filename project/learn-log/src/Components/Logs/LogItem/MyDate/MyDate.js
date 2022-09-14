@@ -1,12 +1,17 @@
 import "./MyDate.css"
 
-const Comp = () => {
+const Comp = (props) => {
+  const { date } = props
+
+  const month = date.toLocaleString("zh-CN", { month: "long" })
+  const day = date.getDate()
+
   return <div className="date">
   <div className="month">
-    四月
+    {month}
   </div>
   <div className="day">
-    19
+    {day}
   </div>
 </div>
 }
