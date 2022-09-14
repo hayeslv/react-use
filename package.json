@@ -27,7 +27,8 @@
       "eslint-comments/disable-enable-pair": "off",
       "jsx-a11y/anchor-is-valid": "off",
       "no-script-url": "off"
-    }
+    },
+    "ignorePatterns": ["node_modules", "build"]
   },
   "browserslist": {
     "production": [

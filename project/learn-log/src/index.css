@@ -1,0 +1,68 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #DFDFDF;
+}
+
+/* 外层容器logs */
+.logs {
+  width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #EAE2B7;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 设置每一项的样式 */
+.item {
+  display: flex;
+  margin: 16px 0;
+  background-color: #FCBF49;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 6px;
+}
+
+/* 日期样式 */
+.date {
+  width: 90px;
+  background-color: #fff;
+  border-radius: 10px;
+  font-weight: bold;
+  text-align: center;
+  overflow: hidden;
+}
+
+.month {
+  height: 30px;
+  line-height: 30px;
+  font-size: 20px;
+  color: #fff;
+  background-color: #D62828;
+}
+
+.day {
+  height: 60px;
+  line-height: 60px;
+  font-size: 50px;
+}
+
+/* 日志内容 */
+.content {
+  flex: auto;
+  text-align: center;
+  font-weight: bold;
+}
+
+.desc {
+  font-size: 16px;
+  color: #194B49;
+}
+
+.time {
+  color: #D62828;
+}
