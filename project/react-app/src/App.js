@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import FilterMeals from './components/FilterMeals/FilterMeals';
 import Meals from './components/Meals/Meals'
 import CartContext from "./store/cart-context"
 
@@ -97,9 +98,16 @@ export default function App() {
     setCartData(newCart)
   }
 
+  // 过滤
+  const filterHandler = (keyword) => {
+    const newMealData = MEALS_DATA.filter(item => item.title.includes(keyword))
+    setMealsData(newMealData)
+  }
+
   return (
     <CartContext.Provider value={{ ...cartData, addItem, removeItem }}>
       <div>
+        <FilterMeals onFilter={filterHandler} />
         <Meals 
           mealsData={mealsData}
         />
