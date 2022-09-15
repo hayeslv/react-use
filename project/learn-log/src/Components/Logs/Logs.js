@@ -5,16 +5,20 @@ import "./Logs.css"
 
 const Logs = (props) => {
   
-  const logItemDate = props.data.map((item, index) => 
+  let logItemData = props.data.map((item, index) => 
   <LogItem 
     onDeleteLog={() => props.onDeleteLog(index)}
     key={item.id}
     {...item}
   ></LogItem>)
 
+  if(logItemData.length === 0) {
+    logItemData = <p className="no-logs">没有找到日志！</p>
+  }
+
   return <Card className="logs">
     {
-      logItemDate
+      logItemData 
     }
   </Card>
 }
