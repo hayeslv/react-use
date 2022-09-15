@@ -19,13 +19,22 @@ export default function App() {
     newLog.id = Date.now() + ''
     // logsData.push(newLog)
     setLogData([newLog, ...logsData])
+  }
 
+  // 删除一条数据
+  const deleteLogByIndex = (index) => {
+    console.log(index);
+    setLogData(prevState => {
+      const newLogs = [...prevState]
+      newLogs.splice(index, 1)
+      return newLogs
+    })
   }
 
   return <div className="app">
     {/* <Ref /> */}
     <LogsForm onSaveLog={saveLogHandler} />
-    <Logs data={logsData} />
+    <Logs data={logsData} onDeleteLog={deleteLogByIndex} />
     {/* <UseState /> */}
     {/* <ClassComp /> */}
   </div>

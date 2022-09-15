@@ -5,7 +5,12 @@ import "./Logs.css"
 
 const Logs = (props) => {
   
-  const logItemDate = props.data.map((item) => <LogItem key={item.id} {...item}></LogItem>)
+  const logItemDate = props.data.map((item, index) => 
+  <LogItem 
+    onDeleteLog={() => props.onDeleteLog(index)}
+    key={item.id}
+    {...item}
+  ></LogItem>)
 
   return <Card className="logs">
     {
