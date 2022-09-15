@@ -1,8 +1,10 @@
 import React from 'react'
-import classes from "./App.module.css"
+import Meals from './components/Meals/Meals'
 
 export default function App() {
   return (
-    <div style={{ width: "750rem", height: 200, backgroundColor: "#bfa" }}>111</div>
+    <div>
+      <Meals />
+    </div>
   )
 }
