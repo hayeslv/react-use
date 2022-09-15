@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Cart from './components/Cart/Cart';
 import FilterMeals from './components/FilterMeals/FilterMeals';
 import Meals from './components/Meals/Meals'
 import CartContext from "./store/cart-context"
@@ -111,6 +112,8 @@ export default function App() {
         <Meals 
           mealsData={mealsData}
         />
+        <Cart />
+
       </div>
     </CartContext.Provider>
   )
