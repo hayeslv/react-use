@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import iconImg from "../../asset/bag.png"
 import classes from "./Cart.module.css"
 import CartContext from "../../store/cart-context"
@@ -10,6 +10,15 @@ export default function Cart() {
 
   const [showDetails, setShowDetails] = useState(false)
   const [showCheckout, setShowCheckout] = useState(false)
+
+  // 在组件每次重新渲染的时候，检查一下商品的总数量，如果数量为0，则修改showDetails为false
+  useEffect(() => {
+    if(ctx.totalAmount === 0) {
+      setShowDetails(false)
+      setShowCheckout(false)
+    }
+  }, [ctx, setShowDetails, setShowCheckout])
+
 
   const toggleDetailsHandler = () => {
     if(ctx.totalAmount === 0) {
