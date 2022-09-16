@@ -5,6 +5,7 @@ import ReactDOM from "react-dom"
 import classes from './Checkout.module.css';
 import CartContext from "../../../store/cart-context"
 import CheckoutItem from './CheckoutItem/CheckoutItem';
+import Bar from './Bar/Bar';
 
 const checkoutRoot = document.getElementById("checkout-root")
 
@@ -29,5 +30,7 @@ export default function Checkout(props) {
         <p className={classes.TotalPrice}>{ctx.totalPrice}</p>
       </footer>
     </div>
+
+    <Bar />
   </div>, checkoutRoot)
 }
