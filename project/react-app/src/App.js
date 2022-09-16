@@ -99,6 +99,15 @@ export default function App() {
     setCartData(newCart)
   }
 
+  const clearCart = () => {
+    const newCart = {...cartData}
+    newCart.items.forEach(v => delete v.amount)
+    newCart.items = []
+    newCart.totalAmount = 0
+    newCart.totalPrice = 0
+    setCartData(newCart)
+  }
+
   // 过滤
   const filterHandler = (keyword) => {
     const newMealData = MEALS_DATA.filter(item => item.title.includes(keyword))
@@ -106,7 +115,7 @@ export default function App() {
   }
 
   return (
-    <CartContext.Provider value={{ ...cartData, addItem, removeItem }}>
+    <CartContext.Provider value={{ ...cartData, addItem, removeItem, clearCart }}>
       <div>
         <FilterMeals onFilter={filterHandler} />
         <Meals 
