@@ -1,6 +1,6 @@
-import React from 'react'
-import classes from "./Confirm.module.css"
-import BackDrop from "../BackDrop/BackDrop"
+import React from 'react';
+import classes from './Confirm.module.css';
+import BackDrop from '../BackDrop/BackDrop';
 
 export default function Confirm(props) {
   return (
@@ -8,10 +8,10 @@ export default function Confirm(props) {
       <div className={classes.Confirm}>
         <p className={classes.ConfirmText}>{props.confirmText}</p>
         <div>
-          <button className={classes.Cancel} onClick={(e) => {props.onCancel(e)}}>取消</button>
-          <button className={classes.Ok} onClick={(e) => {props.onOk(e)}}>确认</button>
+          <button className={classes.Cancel} onClick={(e) => { props.onCancel(e); }}>取消</button>
+          <button className={classes.Ok} onClick={(e) => { props.onOk(e); }}>确认</button>
         </div>
       </div>
     </BackDrop>
-  )
+  );
 }

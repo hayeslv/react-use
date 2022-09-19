@@ -1,22 +1,21 @@
-import React, { useContext } from 'react'
-import classes from "./Counter.module.css"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import React, { useContext } from 'react';
+import classes from './Counter.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import CartContext from '../../../store/cart-context';
 
 export default function Counter(props) {
-
-  const ctx = useContext(CartContext)
+  const ctx = useContext(CartContext);
 
   const addButtonHandler = () => {
     // ctx.addItem(props.meal)
-    ctx.cartDispatch({ type: "ADD", meal: props.meal })
-  }
+    ctx.cartDispatch({ type: 'ADD', meal: props.meal });
+  };
 
   const subButtonHandler = () => {
     // ctx.removeItem(props.meal)
-    ctx.cartDispatch({ type: "REMOVE", meal: props.meal })
-  }
+    ctx.cartDispatch({ type: 'REMOVE', meal: props.meal });
+  };
 
   return (
     <div className={classes.Counter}>
@@ -34,5 +33,5 @@ export default function Counter(props) {
         <FontAwesomeIcon icon={faPlus} />
       </button>
     </div>
-  )
+  );
 }

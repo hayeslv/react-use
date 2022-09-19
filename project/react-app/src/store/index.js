@@ -13,18 +13,20 @@
 
 // export default store
 
-
-import { configureStore } from "@reduxjs/toolkit"
-import studentApi from "./studentApi"
+import { configureStore, setupListender } from '@reduxjs/toolkit';
+import studentApi from './studentApi';
 
 const store = configureStore({
   reducer: {
-    [studentApi.reducerPath]: studentApi.reducer
+    [studentApi.reducerPath]: studentApi.reducer,
   },
   // 让缓存生效
   middleware: getDefaultMiddleware => {
-    return getDefaultMiddleware().concat(studentApi.middleware)
-  }
-})
+    return getDefaultMiddleware().concat(studentApi.middleware);
+  },
+});
 
-export default store
+// 支持 refetchOnFocus、refetchOnReconnect
+setupListender(store.dispatch);
+
+export default store;

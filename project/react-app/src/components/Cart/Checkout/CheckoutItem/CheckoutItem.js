@@ -1,12 +1,12 @@
-import React from 'react'
-import classes from "./CheckoutItem.module.css"
-import Counter from "../../../UI/Counter/Counter"
+import React from 'react';
+import classes from './CheckoutItem.module.css';
+import Counter from '../../../UI/Counter/Counter';
 
 export default function CheckoutItem(props) {
   return (
     <div className={classes.CheckoutItem}>
       <div className={classes.MealImg}>
-        <img src={props.meal.img} alt='' />
+        <img src={props.meal.img} alt="" />
       </div>
       <div className={classes.Desc}>
         <h2 className={classes.Title}>{props.meal.title}</h2>
@@ -16,5 +16,5 @@ export default function CheckoutItem(props) {
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -1,12 +1,12 @@
-import React from 'react'
-import Counter from '../../UI/Counter/Counter'
-import classes from "./Meal.module.css"
+import React from 'react';
+import Counter from '../../UI/Counter/Counter';
+import classes from './Meal.module.css';
 
 export default function Meal(props) {
   return (
     <div className={classes.Meal}>
       <div className={classes.ImgBox}>
-        <img src={props.meal.img} alt='' />
+        <img src={props.meal.img} alt="" />
       </div>
       <div className={classes.DescBox}>
         <h2 className={classes.Title}>{props.meal.title}</h2>
@@ -15,11 +15,11 @@ export default function Meal(props) {
         }
         <div className={classes.PriceWrapper}>
           <span className={classes.Price}>{props.meal.price}</span>
-          <Counter 
-            meal={props.meal} 
+          <Counter
+            meal={props.meal}
           />
         </div>
       </div>
     </div>
-  )
+  );
 }
