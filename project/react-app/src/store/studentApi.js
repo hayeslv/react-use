@@ -8,6 +8,7 @@ const studentApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: 'http://localhost:1337/api/',
   }),
+  tagTypes: ['student'], // 用来指定Api中的标签类型
   // pendpoints用来指定Api中的各种功能，需要一个对象作为返回值
   endpoints(build) { // build是请求的构建器，通过build来设置请求的相关信息
     return {
@@ -16,15 +17,44 @@ const studentApi = createApi({
           // 用来指定请求的子路径
           return 'students';
         },
+        providesTags: ['student'], // 只要满足其中一个标签失效，就会重新加载数据
       }),
       // getStudentById: build.query(),
-      // updateStudent: build.mutation()
+      delStudent: build.mutation({
+        query(id) {
+          return {
+            url: `students/${id}`,
+            method: 'delete',
+          };
+        },
+      }),
+      addStudent: build.mutation({
+        query(stu) {
+          return {
+            url: 'students',
+            method: 'post',
+            body: { data: stu.attributes },
+          };
+        },
+        invalidatesTags: ['student'], // 使标签失效：当我们调用addStudent去添加学生的时候，它会自动让“带student标签”的数据失效
+      }),
+      updateStudent: build.mutation({
+        query(stu) {
+          return {
+            url: `students/${stu.id}`,
+            method: 'put',
+            body: { data: stu.attributes },
+          };
+        },
+      }),
     };
   },
 });
 
 export const {
   useGetStudentsQuery,
+  useAddStudentMutation,
+  useUpdateStudentMutation,
 } = studentApi;
 
 export default studentApi;

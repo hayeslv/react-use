@@ -13,7 +13,8 @@
 
 // export default store
 
-import { configureStore, setupListender } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
+import { setupListeners } from '@reduxjs/toolkit/dist/query/react';
 import studentApi from './studentApi';
 
 const store = configureStore({
@@ -27,6 +28,6 @@ const store = configureStore({
 });
 
 // 支持 refetchOnFocus、refetchOnReconnect
-setupListender(store.dispatch);
+setupListeners(store.dispatch);
 
 export default store;
