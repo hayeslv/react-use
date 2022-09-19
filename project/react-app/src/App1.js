@@ -1,38 +1,17 @@
-import React from 'react'
-import "./store/index"
-import { useSelector, useDispatch } from "react-redux"
-import { setName as setStuName } from "./store/stuSlice"
+import { useGetStudentsQuery } from "./store/studentApi"
 
 export default function App1() {
-  // const student = useSelector(state => state.student)
-  // const school = useSelector(state => state.school)
-  // 或者使用如下方式
-  const { student, school } = useSelector(state => state)
-  // 获取派发器对象
-  const dispatch = useDispatch()
-  // 获取action的构建器
-  
-
-  const setNameHandler = () => {
-    dispatch(setStuName("沙和尚"))
-  }
+  // 调用Api查询数据
+  const { data, isSuccess } = useGetStudentsQuery()
 
   return (
     <div>
-      <p>
-        {student.name} ---
-        {student.age} ---
-        {student.gender} ---
-        {student.address}
-      </p>
-      <button onClick={setNameHandler}>修改name</button>
-
-      <hr />
-
-      <p>
-        {school.name} ---
-        {school.address} 
-      </p>
+      { isSuccess && data.data.map(v => <p key={v.id}>
+        {v.attributes.name} --- 
+        {v.attributes.age} --- 
+        {v.attributes.gender} --- 
+        {v.attributes.address} --- 
+      </p>) }
     </div>
   )
 }
