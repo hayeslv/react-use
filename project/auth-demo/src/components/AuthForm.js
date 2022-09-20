@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from "react-redux"
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useLoginMutation, useRegisterMutation } from '../store/api/authApi'
 import { login } from '../store/reducer/authSlice'
 
@@ -16,6 +16,8 @@ export default function AuthForm() {
   const dispatch = useDispatch()
   // 获取Navigate
   const navigate = useNavigate()
+  const location = useLocation()
+  const from = location.state?.preLocation?.pathname || "/"
 
 
   const formItemChange = (type, value) => {
@@ -37,7 +39,7 @@ export default function AuthForm() {
             { token: res.data.jwt, user: res.data.user }
           ))
 
-          navigate("/", { replace: true })
+          navigate(from, { replace: true })
         }
       })
     } else {
