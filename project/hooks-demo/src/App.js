@@ -1,43 +1,34 @@
-import React, {useState, useMemo} from 'react';
+import { isPending } from '@reduxjs/toolkit';
+import React, {useState, useMemo, useRef, useEffect, useLayoutEffect, useInsertionEffect, useDeferredValue, startTransition, useTransition} from 'react';
 import Some from './components/Some';
+import useMyHook from './hooks/useMyHook';
 
-function sum(a, b) {
-  const begin = Date.now()
-  while(1) {
-    if(Date.now() - begin > 3000) {
-      break
-    }
-  }
 
-  console.log("函数执行了")
-  return a+b
-}
 
 export default function App() {
+  console.log("组件重新渲染了~~~")
   const [count, setCount] = useState(1)
 
-  // let a = 123
-  // let b = 456
+  // useDeferredValue 需要一个 state 作为参数，会为该useDeferredValue创建一个延迟值
+  // 当设置了延迟值后，每次state修改时都会触发两次重新渲染
+  // 这两次执行对于其他的部分没有区别，但是延迟值两次执行的值是不同的
+  // 第一次执行，延迟值是state的旧值，第二次执行，延迟值是state的新值
+  const deferredCount = useDeferredValue(count)
+  console.log(count, deferredCount)
 
-  // if(count % 10 === 0) {
-  //   a += count
-  // }
+  startTransition(() => {
+    setCount(2)
+  })
 
-  // const result = useMemo(() => {
-  //   return sum(a, b)
-  // }, [a, b])
+  const [isPending, startTransition] =  useTransition()
 
-  const someEle = useMemo(() => {
-    return <Some a={10} b={22} />
-  }, [])
+  // useMyHook()
 
   return (
     <div>
       <h1>App</h1>
-      {someEle}
-      {/* <h2>{result}</h2> */}
       <h3>{count}</h3>
-      <button onClick={() => setCount(preState => preState + 1)}>点位</button>
+      <button onClick={() => setCount(prevState => prevState + 1)}>点我</button>
     </div>
   );
 }
