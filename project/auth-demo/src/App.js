@@ -2,11 +2,13 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout';
 import NeedAuth from './components/NeedAuth';
+import useAutoLogout from './hooks/useAutoLogout';
 import AuthFormPage from './pages/AuthFormPage';
 import HomePage from './pages/HomePage';
 import ProfilePage from './pages/ProfilePage';
 
 export default function App() {
+  useAutoLogout()
 
   return (
     <Layout>
